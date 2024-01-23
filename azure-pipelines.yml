@@ -1,0 +1,29 @@
+trigger:
+  branches:
+    exclude:
+      - '*'
+
+pool:
+  vmImage: 'windows-latest'
+
+stages:
+- stage: CI
+  jobs:
+  - job: Build
+    steps:
+    - script: echo 'Building the application'
+      displayName: 'Build'
+
+- stage: DEV
+  jobs:
+  - job: Deploy_DEV
+    steps:
+    - script: echo 'Deploying to DEV environment'
+      displayName: 'Deploy to DEV'
+
+- stage: PREPROD
+  jobs:
+  - job: Deploy_PREPROD
+    steps:
+    - script: echo 'Deploying to PREPROD environment'
+      displayName: 'Deploy to PREPROD'
